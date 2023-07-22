@@ -2,12 +2,15 @@ buttonColours = ["red", "blue", "green", "yellow"]
 gamePattern = []
 userClickedPattern = []
 
-var level = 0
-var gameStarted = false
+var level = 0;
+var topScore = level;
+var gameStarted = false;
 
 function nextSequence() {
     level++
+    measureTopScore()
     $("#level-title").text("Level " + level);
+    $("#top-score").text("Top Score: " + topScore);
 
     userClickedPattern = []
 
@@ -73,4 +76,10 @@ function startOver() {
     level = 0;
     gamePattern = [];
     started = false;
+}
+
+function measureTopScore() {
+    if (level > topScore) {
+        topScore = level;
+    }
 }
